@@ -23,11 +23,17 @@ pipeline {
          }
       }
 
-      stage('Build and Push Image') {
+      stage('Docker build Image') {
          steps {
            sh 'docker image build -t ${REPOSITORY_TAG} .'
          }
       }
+      
+      stage("Docker push Image") {
+         steps {
+           sh "docker push ${REPOSITORY_TAG}"
+         }
+          }
 
       stage('Deploy to Cluster') {
           steps {
