@@ -29,11 +29,11 @@ pipeline {
          }
       }
       
-     // stage("Docker push Image") {
-     //  steps {
-     //    sh "docker push ${REPOSITORY_TAG}"
-     //  }
-     // }
+      stage("Docker push Image") {
+         steps {
+           sh "docker push ${REPOSITORY_TAG}"
+         }
+      }
 
       stage('Deploy to Cluster') {
           steps {
